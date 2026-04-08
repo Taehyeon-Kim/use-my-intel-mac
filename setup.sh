@@ -163,14 +163,14 @@ TMUX
 info "tmux 설정 완료"
 
 mkdir -p ~/bin
-cat > ~/bin/cc << 'SCRIPT'
+cat > ~/bin/ccs << 'SCRIPT'
 #!/bin/bash
-# cc - Claude Code tmux 세션 매니저
+# ccs - Claude Code tmux 세션 매니저
 # 사용법:
-#   cc            → 기본 세션 접속 (없으면 생성)
-#   cc work       → 'work' 세션 접속
-#   cc ls         → 세션 목록
-#   cc kill work  → 'work' 세션 종료
+#   ccs            → 기본 세션 접속 (없으면 생성)
+#   ccs work       → 'work' 세션 접속
+#   ccs ls         → 세션 목록
+#   ccs kill work  → 'work' 세션 종료
 
 SESSION="${1:-claude}"
 
@@ -190,12 +190,12 @@ case "$SESSION" in
     ;;
 esac
 SCRIPT
-chmod +x ~/bin/cc
+chmod +x ~/bin/ccs
 
 if ! grep -q 'export PATH="$HOME/bin:$PATH"' ~/.zprofile 2>/dev/null; then
   echo 'export PATH="$HOME/bin:$PATH"' >> ~/.zprofile
 fi
-info "cc (Claude Code 세션 매니저) 설치 완료"
+info "ccs (Claude Code 세션 매니저) 설치 완료"
 
 # 크롤링 편의 스크립트
 cat > ~/bin/crawl << 'SCRIPT'
@@ -250,9 +250,9 @@ echo "  3. 원격 접속 테스트:"
 echo "     ssh $(whoami)@<tailscale-hostname>"
 echo ""
 echo "사용법:"
-echo "  cc          → Claude Code용 tmux 세션 열기"
-echo "  cc work     → 'work' 이름으로 세션 열기"
-echo "  cc ls       → 세션 목록 보기"
+echo "  ccs          → Claude Code용 tmux 세션 열기"
+echo "  ccs work     → 'work' 이름으로 세션 열기"
+echo "  ccs ls       → 세션 목록 보기"
 echo "  claude      → Claude Code 실행"
 echo ""
 echo "  Ctrl+B, D   → tmux 세션에서 빠져나오기 (세션 유지됨)"
